@@ -657,4 +657,6 @@ const products = [
       "mens"
     ]
   }
+
+  // Hej!
 ];
