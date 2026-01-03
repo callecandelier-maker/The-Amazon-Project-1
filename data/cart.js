@@ -1,2 +1,2 @@
 // Adding products and quantity
-const cart = [];
+export const cart = [];
