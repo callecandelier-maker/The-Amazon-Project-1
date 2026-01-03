@@ -103,7 +103,16 @@ document.querySelectorAll('.js-add-to-cart')
         });
         }
 
-        console.log(cart);
+        // Variable that we use to store the total quantity
+        let cartQuantity = 0;
+
+        // Calculate the total quantity
+        cart.forEach((item) => {
+            cartQuantity += item.quantity;
+        })
+
+        document.querySelector('.js-cart-quantity')
+            .innerHTML = cartQuantity;
       });  
     });
 
