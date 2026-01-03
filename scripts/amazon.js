@@ -1,5 +1,6 @@
-//imorting via the attribute module
+//imorting other scripts via the attribute module
 import {cart} from '../data/cart.js';
+import { products } from '../data/products.js';
 
 // Data structure: linked from products.js 
 // a list where we save the data about the products 
