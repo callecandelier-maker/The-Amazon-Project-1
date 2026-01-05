@@ -1,5 +1,5 @@
 // Adding products and quantity
-export const cart = [{
+export let cart = [{
     // normalizing the data
     productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
     quantity: 2
@@ -41,4 +41,25 @@ export function addToCart(productId){
         quantity: 1
     });
     }
+}
+
+
+// ----------------------------------------------------------
+// This function removes an item from the cart.
+// It does this by creating a new cart that contains
+// every cart item EXCEPT the one with the matching productId.
+// ----------------------------------------------------------
+export function removeFromCart(productId){
+    const newCart = [];
+
+    // Only keep the items whose productId does NOT match
+    cart.forEach((cartItem) => {
+
+        if(cartItem.productId !== productId){
+            newCart.push(cartItem)
+        }
+    });
+
+    cart = newCart;
+
 }
