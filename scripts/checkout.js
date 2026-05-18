@@ -22,6 +22,11 @@ cart.forEach((cartItem) => {
         }
     });
 
+    if (!matchingProduct) {
+      console.error('No matching product found for', productId);
+      return;
+    }
+
 
     cartSummaryHTML += `
         <div class="cart-item-container 
@@ -118,6 +123,7 @@ document.querySelectorAll('.js-delete-link')
             // update the HTML
             const container = document.querySelector(`
                 .js-cart-item-container-${productId}`);
+                console.log(container)
             
             container.remove(); 
         } );
