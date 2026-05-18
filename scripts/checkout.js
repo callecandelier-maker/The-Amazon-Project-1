@@ -23,7 +23,7 @@ cart.forEach((cartItem) => {
     });
 
     if (!matchingProduct) {
-      console.error('No matching product found for', productId);
+      //console.error('No matching product found for', productId);
       return;
     }
 
