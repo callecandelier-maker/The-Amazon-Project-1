@@ -39,7 +39,7 @@ export function addToCart(productId){
             matchingItem = cartItem; // Save the match
 
         }   
-    })
+    });
 
     // If the product was already in the cart…    
     if(matchingItem){
@@ -79,4 +79,24 @@ export function removeFromCart(productId){
 
     saveToStorage();
 
+}
+
+export function updateDeliveryOption(productId, deliveryOptionId){
+
+     // Will store the cart item if we find a matching product
+    let matchingItem; 
+
+    // Loop through all items currently in the cart
+    cart.forEach((cartItem) => {
+        
+        // Check if this cart imen matches the product we´re adding
+        if(productId === cartItem.productId){
+            matchingItem = cartItem; // Save the match
+
+        }   
+    });
+    
+    matchingItem.deliveryOptionId = deliveryOptionId;
+
+    saveToStorage();
 }
