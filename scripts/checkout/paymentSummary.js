@@ -71,7 +71,4 @@ export function renderPaymentSummary() {
         .innerHTML = paymentSummaryHTML;
 
 
-    console.log(totalBeforeTaxCents);
-    console.log(taxCents);
-    console.log(totalCents);
 }

@@ -7,6 +7,7 @@ import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 //import { deliveryOptions } from '..data/deliveryOptions.js';
 import { deliveryOptions, getDeliveryOption } from '../../data/DeliveryOptions.js';
+import { renderPaymentSummary } from './paymentSummary.js';
 
 
 export function renderOrderSummary(){
@@ -176,6 +177,8 @@ export function renderOrderSummary(){
                   .js-cart-item-container-${productId}`);
               // Remove the cart item from the page
               container.remove(); 
+
+              renderPaymentSummary();
           } );
       });
 
@@ -186,6 +189,7 @@ export function renderOrderSummary(){
           updateDeliveryOption(productId, deliveryOptionId);
           //recursion
           renderOrderSummary();
+          renderPaymentSummary();
         });
       });
 }
