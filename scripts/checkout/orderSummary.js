@@ -1,12 +1,12 @@
 
 //Named export
 import {cart, removeFromCart, updateDeliveryOption} from '../../data/cart.js';
-import { products } from '../../data/products.js';
+import { products, getProduct} from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
 import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 //import { deliveryOptions } from '..data/deliveryOptions.js';
-import { deliveryOptions } from '../../data/DeliveryOptions.js';
+import { deliveryOptions, getDeliveryOption } from '../../data/DeliveryOptions.js';
 
 
 export function renderOrderSummary(){
@@ -21,16 +21,11 @@ export function renderOrderSummary(){
       const productId = cartItem.productId
 
       // This will store the product object that matches the cart item
-      let matchingProduct;
+      const matchingProduct = getProduct(productId);
 
-      // Loop through all products 
-      products.forEach((product) => {
-          // Check if this product has the same id as the one in the cart
-          if (product.id === productId){
-              // If so, save a reference to this product
-              matchingProduct = product;
-          }
-      });
+      // Loop through all products denna rad har tegits 
+      // hamnat i en funktion
+
 
       // Stop processing if no matching product was found
       if (!matchingProduct) {
@@ -40,15 +35,7 @@ export function renderOrderSummary(){
       const deliveryOptionId = cartItem.deliveryOptionId;
 
       // Will store the matching delivery option object
-      let deliveryOption;
-
-      // Find the delivery option that belongs to this cart item
-      deliveryOptions.forEach((option) => {
-        if (option.id === deliveryOptionId) {
-          deliveryOption = option;
-
-        }
-      });
+      const deliveryOption = getDeliveryOption(deliveryOptionId);
 
       // Calculate the delivery date based on the selected option
       const today = dayjs();

@@ -11,3 +11,17 @@ export const deliveryOptions = [{
     deliveryDays: 1,
     priceCents: 999
   }];
+
+  export function getDeliveryOption(deliveryOptionId) {
+    // Will store the matching delivery option object
+      let deliveryOption;
+
+      // Find the delivery option that belongs to this cart item
+      deliveryOptions.forEach((option) => {
+        if (option.id === deliveryOptionId) {
+          deliveryOption = option;
+
+        }
+      });
+      return deliveryOption || deliveryOptions[0];
+  }
