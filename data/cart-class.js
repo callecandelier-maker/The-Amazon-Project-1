@@ -2,23 +2,24 @@
 class Cart {
     //properties
     cartItems;
-    localStorageKey;
+    //# means that it is a private property
+    #localStorageKey;
 
     constructor(localStorageKey) {
         // Give each cart its own Local Storage key.
         // This allows them to save and load data independently.
-        this.localStorageKey = localStorageKey;
+        this.#localStorageKey = localStorageKey;
         // Load the cart data from Local Storage.
         // If no data exists, default cart items will be created.
-        this.loadFromStorage();
+        this.#loadFromStorage();
     }
 
-    loadFromStorage (){
+    #loadFromStorage (){
         // "this" refers to the Cart object that called this method
         // (for example: cart or businessCart)
 
         // Load cart data from Local Storage using this cart's storage key
-        this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
+        this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey));
 
             if (!this.cartItems){
                 this.cartItems = [{
@@ -39,7 +40,7 @@ class Cart {
 
     //console.log('Cart in cart.js:', cart);//
     saveToStorage() {
-        localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+        localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
     }
 
     // -----------------------------------------------------------------
@@ -126,9 +127,6 @@ class Cart {
 // instance of the class
 const cart = new Cart('cart-oop');
 const businessCart = new Cart('cart-business');
-
-
-
 
 console.log(cart);
 console.log(businessCart);
