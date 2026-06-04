@@ -118,7 +118,7 @@ function Cart(localStorageKey) {
 
 
 const cart = Cart('cart-oop');
-const businessCart = Cart();
+const businessCart = Cart('cart-business');
 
 // Adding products and quantity
 cart.loadFromStorage('cart-business');
