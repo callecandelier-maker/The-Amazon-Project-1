@@ -98,7 +98,7 @@ export let products = [];
 
 export function loadProductsFetch() {
 const promise = fetch(
-  'https://supersimplebackend.dev/products'
+  'https:/supersimplebackend.dev/products'
 ).then((response) => {
     return response.json();
   }).then((productsData) => {
@@ -111,7 +111,13 @@ const promise = fetch(
       });
 
       console.log('load products');
+
+  }).catch((error) => {
+    console.log('Unexpexted error. Please try again later');
   });
+  
+
+
   return promise;
 }
 
@@ -136,6 +142,10 @@ export function loadProducts(fun) {
     console.log('load products');
 
     fun();
+  });
+
+  xhr.addEventListener('error', (error) => {
+    console.log('Unexpexted error. Please try again later');
   });
 
   xhr.open('GET','https://supersimplebackend.dev/products');

@@ -8,16 +8,26 @@ import { loadCart } from '../data/cart.js';
 
 //retuns a promise
 async function loadPage() {
-    //await lets us wait for a promise to finish.
-    // we can only use await when we are ina function
-    await loadProductsFetch();
+    try{
+        //throw 'error1';
 
-    const value = await new Promise((resolve) => {
-        loadCart(() => {
-            resolve('value3');
+        //await lets us wait for a promise to finish.
+        // we can only use await when we are ina function
+        await loadProductsFetch();
+
+        const value = await new Promise((resolve, reject) => {
+            //throw 'error2';
+            loadCart(() => {
+                //reject('error3');
+                resolve('value3');
+            });
+
         });
 
-    });
+    } catch(error) {
+        console.log('Unexpexted error. Please try again later');
+    }
+    
 
     renderOrderSummary(); 
     renderPaymentSummary();
